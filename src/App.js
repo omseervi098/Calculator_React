@@ -11,13 +11,24 @@ function App() {
   };
   const handleInput = (e) => {
     let val = e.target.innerText;
+    if (input === "Invalid Input") {
+      setInput(val);
+      return;
+    }
     if (result !== "") {
       setInput(result + val);
       setResult("");
     } else setInput(input + val);
   };
   const getResults = () => {
-    let res = eval(input);
+    let res = "";
+    try {
+      res = eval(input);
+    } catch (err) {
+      console.log("invalid");
+      setInput("Invalid Input");
+    }
+
     //if it is a decimal number, round it to 3 decimal places
     if (res % 1 !== 0) res = Math.round((res + Number.EPSILON) * 1000) / 1000;
     setResult(res);
