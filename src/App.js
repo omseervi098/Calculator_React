@@ -50,6 +50,9 @@ function App() {
   };
   return (
     <div className="App">
+      <div className="header">
+        <h1>Calculator</h1>
+      </div>
       <div className="main">
         <Input input={input} setInput={setInput} result={result} />
         <Buttons
@@ -60,11 +63,8 @@ function App() {
         />
       </div>
       <div className="footer">
-        {/* <p>Designed and Coded byOmprakash Choudhary</p> */}
-        {/* portfolio link */}
-        {/* <a target="_blank" href="https://omprakash.me">
-          Portfolio
-        </a> */}
+        Created by Omprakash Choudhary |{" "}
+        <a href="https://www.omprakash.me">Portfolio</a>
       </div>
     </div>
   );
