@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import Input from "./components/Input";
+import Buttons from "./components/Buttons";
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
+  const [input, setInput] = useState("");
+  const [result, setResult] = useState("");
+  const handleClear = () => {
+    setInput("");
+    setResult("");
+  };
+  const handleInput = (e) => {
+    let val = e.target.innerText;
+    if (result !== "") {
+      setInput(result + val);
+      setResult("");
+    } else setInput(input + val);
+  };
+  const getResults = () => {
+    let res = eval(input);
+    //if it is a decimal number, round it to 3 decimal places
+    if (res % 1 !== 0) res = Math.round((res + Number.EPSILON) * 1000) / 1000;
+    setResult(res);
+  };
+  const changeplusminus = () => {
+    if (result !== "") {
+      if (result[0] === "-") {
+        setResult(result.substring(1));
+      } else {
+        setResult("-" + result);
+      }
+    } else if (input !== "") {
+      if (input[0] === "-") {
+        setInput(input.substring(1));
+      } else {
+        setInput("-" + input);
+      }
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="main">
+        <Input input={input} setInput={setInput} result={result} />
+        <Buttons
+          getResults={getResults}
+          handleClear={handleClear}
+          handleInput={handleInput}
+          changeplusminus={changeplusminus}
+        />
+      </div>
+      <div className="footer">
+        {/* <p>Designed and Coded byOmprakash Choudhary</p> */}
+        {/* portfolio link */}
+        {/* <a target="_blank" href="https://omprakash.me">
+          Portfolio
+        </a> */}
+      </div>
     </div>
   );
 }
