@@ -2,10 +2,10 @@
 # Calculator
 - Calculator built using reactJS
 
-
-
-
-
+## Folder Structure
+* ```App.js``` - Main Component
+  * ```components/Button.js``` - subComponent for button Grid
+  * ```components/Input.js```  - subComponent for input display
 
 ## Features 
 * ```Add, Multiply, Subtract, Divide```
