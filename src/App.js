@@ -3,12 +3,13 @@ import Input from "./components/Input";
 import Buttons from "./components/Buttons";
 import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
-  const [input, setInput] = useState("");
-  const [result, setResult] = useState("");
+  const [input, setInput] = useState(""); //State for input
+  const [result, setResult] = useState(""); //State for resultdisplay
   const handleClear = () => {
     setInput("");
     setResult("");
   };
+
   const handleInput = (e) => {
     let val = e.target.innerText;
     if (input === "Invalid Input") {
@@ -23,7 +24,7 @@ function App() {
   const getResults = () => {
     let res = "";
     try {
-      res = eval(input);
+      res = eval(input); //evaluates the math expression
     } catch (err) {
       console.log("invalid");
       setInput("Invalid Input");

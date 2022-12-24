@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 function Buttons(props) {
   const { getResults, handleClear, handleInput, changeplusminus } = props;
-  // set up the functions for the buttons
+  // bind the enter key to the getResults function
   document.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       event.preventDefault();

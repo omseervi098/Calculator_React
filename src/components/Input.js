@@ -1,6 +1,6 @@
 function Input(props) {
   const handleInput = (e) => {
-    //check if input is math expression valid characters only
+    //checking if input is math expression valid characters only
     if (e.target.value === "" || e.target.value.match(/^[0-9+\-*/.)(!%]+$/)) {
       props.setInput(e.target.value);
     }
